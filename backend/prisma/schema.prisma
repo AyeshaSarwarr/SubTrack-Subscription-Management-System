@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  email    String @unique
+  password String
+}
+
+model Subscription {
+  id           Int                @id @default(autoincrement())
+  name         String             @unique
+  plan         String?
+  cost         Decimal
+  startDate    DateTime
+  endDate      DateTime
+  billingCycle BillingCycle
+  status       SubscriptionStatus
+  category     Category
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+}
+
+enum BillingCycle {
+  MONTHLY
+  YEARLY
+  WEEKLY
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELLED
+}
+
+enum Category {
+  TECH
+  DESIGN
+  MARKETING
+  PRODUCTIVITY
+  AI
+  ENTERTAINMENT
+  OTHER
+}
