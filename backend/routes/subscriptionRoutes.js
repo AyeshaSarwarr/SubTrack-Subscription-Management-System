@@ -5,7 +5,8 @@ import {
     getAllSubscriptions,
     getSubscriptionById,
     updateSubscription,
-    deleteSubscription
+    deleteSubscription,
+    getRenewalSubscriptions
 } from "../controllers/subscriptionController.js";
 
 const router = Router();
@@ -15,6 +16,7 @@ router.use(authMiddleware);
 router.post("/", createSubscription);
 router.get("/", getAllSubscriptions);
 router.get("/:id", getSubscriptionById);
+router.get("/renewing-soon", getRenewalSubscriptions);
 router.put("/:id", updateSubscription);
 router.delete("/:id", deleteSubscription);
 

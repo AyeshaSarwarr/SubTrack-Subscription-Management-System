@@ -54,3 +54,15 @@ export async function getSubscriptionById(req, res) {
         });
     }
 }
+
+export async function getRenewalSubscriptions(req, res) {
+    try {
+        const days = Number(req.query.days) || 7;
+        const result = await subscriptionService.getRenewingSubscriptions(Number(days));
+        return res.status(200).json(result);
+    } catch (error) {
+        return res.status(404).json({
+            message: error.message
+        });
+    }
+}

@@ -173,7 +173,7 @@ npm run dev
 
 ### Login Page
 
-![Login Page](screenshots/LoginPage.jpeg)
+![Login Page](screenshots/LoginPage.png)
 
 ### Dashboard
 

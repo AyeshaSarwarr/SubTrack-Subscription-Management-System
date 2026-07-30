@@ -55,3 +55,28 @@ export async function getSubscriptionById(subscriptionId) {
     where: { id: subscriptionId },
   });
 }
+
+export async function getRenewingSubscriptions(days = 7) {
+     const subscriptions = await prisma.subscription.findMany({
+        where: {
+            status: "ACTIVE"
+        }
+    });
+
+    const today = new Date();
+
+    const daysLater = new Date(today);
+    daysLater.setDate(today.getDate() + days);
+
+    const renewingSoon =  subscriptions.filter(sub => {
+        const end = new Date(sub.endDate);
+
+        return (
+            sub.status === "ACTIVE" &&
+            end >= today &&
+            end <= daysLater
+        );
+    });
+    
+    return renewingSoon;
+}
