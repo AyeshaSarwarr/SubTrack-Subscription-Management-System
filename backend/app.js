@@ -10,7 +10,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://subtrack.vercel.app",
+  "https://subtrack-subscription-management.vercel.app/",
 ];
 
 
