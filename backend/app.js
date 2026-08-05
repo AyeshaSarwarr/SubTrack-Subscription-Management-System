@@ -4,13 +4,12 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/authRoutes.js";
 import subscriptionRoutes from "./routes/subscriptionRoutes.js";
 import notificationRoutes from "./routes/notificationRoutes.js"
-import "./jobs/reminderJob.js";
 
 const app = express();
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://subtrack-subscription-management.vercel.app/",
+  "https://subtrack-subscription-management.vercel.app",
 ];
 
 
@@ -34,8 +33,4 @@ app.use("/subscriptions", subscriptionRoutes);
 
 app.use("/notifications", notificationRoutes);
 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+export default app;
