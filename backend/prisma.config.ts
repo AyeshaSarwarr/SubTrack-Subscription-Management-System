@@ -3,7 +3,7 @@
 import "dotenv/config";
 import { defineConfig } from "prisma/config";
 
-type ProcessEnv = { DATABASE_URL?: string }; // new line
+type ProcessEnv = { DB_URL?: string }; // new line
 declare const process: { env: ProcessEnv }; // new line
 
 export default defineConfig({
@@ -12,6 +12,6 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    url: process.env["DATABASE_URL"],
+    url: process.env["DB_URL"],
   },
 });

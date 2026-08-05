@@ -7,8 +7,8 @@ const { Pool } = pkg;
 const globalForPrisma = globalThis;
 
 // 1. Initialize a native Node.js PostgreSQL connection pool
-// (This reads DATABASE_URL directly from your process.env or .env file)
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+// (This reads DB_URL directly from your process.env or .env file)
+const pool = new Pool({ connectionString: process.env.DB_URL });
 
 // 2. Wrap the pool in the Prisma adapter
 const adapter = new PrismaPg(pool);
